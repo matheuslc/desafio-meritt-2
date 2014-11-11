@@ -15,23 +15,24 @@
    *
    */
   APP.init = function() {
-    var a = console.log(APP.AJAX('js/data/ideb.json'));
-    console.log(a);
+    APP.AJAX('js/data/ideb.json', function(e) {
+      console.log(e);
+    });
   };
 
 
   /* AJAX function wrapper
    *
    */
-   APP.AJAX = function(url) {
-    var req = new XMLHttpRequest();
+   APP.AJAX = function(url, callback) {
+    var req = new XMLHttpRequest(),
+        ready;
+
+    req.overrideMimeType('application/json');
 
     req.onreadystatechange = function() {
-      if(req.readyState === 4 || req.status === 200) {
-        return JSON.parse(req.responseText);
-      } else {
-        return "error";
-      }
+      ready = (req.readyState == 4 && req.status == 200);
+      callback(ready ? req.responseText : false);
     }
 
     req.open("GET", url, true);
