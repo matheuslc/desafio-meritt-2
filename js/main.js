@@ -23,7 +23,9 @@
 
       // Loop which populate table
       $.each(data.city, function(item, val) {
+        // Ideb average
         var value = APP.calcIdeb(val.flow, val.learn);
+
         html += "<tr class='ideb-city'>" +
           "<td class='city-name' colspan='4'>" + val.name + "</td>" +
           "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
@@ -34,6 +36,7 @@
           "</tr>";
       });
 
+      // Insert data into the table
       $('.ideb-tbody').html(html);
 
     });
