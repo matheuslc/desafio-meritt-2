@@ -1,0 +1,82 @@
+{
+
+  "city": [
+    {
+      "name": "Abdon Batista",
+      "schools": "03",
+      "flow": "0,98",
+      "lear": "5,67",
+      "alert": "11",
+      "atention": "12",
+      "improve": "54",
+      "keep": "32"
+    },
+
+    {
+      "name": "Agrolândia",
+      "schools": "06",
+      "flow": "0,98",
+      "lear": "5,67",
+      "alert": "11",
+      "atention": "12",
+      "improve": "54",
+      "keep": "32"
+    },
+
+    {
+      "name": "Águas Mornas",
+      "schools": "11",
+      "flow": "0,98",
+      "lear": "5,67",
+      "alert": "11",
+      "atention": "12",
+      "improve": "54",
+      "keep": "32"
+    },
+
+    {
+      "name": "Abdon Batista",
+      "schools": "03",
+      "flow": "0,98",
+      "lear": "5,67",
+      "alert": "11",
+      "atention": "12",
+      "improve": "54",
+      "keep": "32"
+    },
+
+    {
+      "name": "Água Doce",
+      "schools": "03",
+      "flow": "0,98",
+      "lear": "5,67",
+      "alert": "11",
+      "atention": "12",
+      "improve": "54",
+      "keep": "32"
+    },
+
+    {
+      "name": "Abelardo Luz",
+      "schools": "06",
+      "flow": "0,98",
+      "lear": "5,67",
+      "alert": "11",
+      "atention": "12",
+      "improve": "54",
+      "keep": "32"
+    },
+
+    {
+      "name": "Adebaran",
+      "schools": "12",
+      "flow": "0,98",
+      "lear": "5,67",
+      "alert": "11",
+      "atention": "12",
+      "improve": "54",
+      "keep": "32"
+    }
+  ]
+
+}

@@ -1,0 +1,221 @@
+// Home
+// All home styles
+
+
+// Anchor
+
+.anchor {
+  display: none;
+}
+
+// Navigation styles
+
+.main-nav {
+  background-color: @nav-color;
+  padding: 20px 25px;
+  .column(12);
+}
+
+.main-logo {
+  .column(3);
+  max-width: 170px;
+  text-align: center;
+
+  i {
+    display: inline-block;
+    font-size: 3.6rem;
+    color: @p-text;
+    margin-right: 15px;
+  }
+}
+
+.main-logo-title {
+  display: inline;
+  font-size: 3.6rem;
+  color: @p-text;
+  margin: 0;
+}
+
+// Input search
+
+.main-search {
+  .column(4);
+  position: relative;
+}
+
+.custom-search {
+    position: relative;
+
+    &:after {
+    content: "\f002";
+    font-family: "FontAwesome";
+    position: absolute;
+    font-size: 2.6rem;
+    display: inline-block;
+    top: 10px;
+    left: 30px;
+  }
+}
+
+.search {
+  display: block;
+  width: 100%;
+  height: 40px;
+  outline: 0;
+  margin-left: 15px;
+  border-radius: 12px;
+  padding-left: 50px;
+  padding-right: 20px;
+  border: 1px solid #404040;
+}
+
+// Menu
+
+.main-menu {
+  .column(5);
+  float: right;
+  padding-left: 0;
+  margin-top: 12px;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+
+}
+
+.main-menu a:last-child li {
+  border-right: 0;
+}
+
+.main-menu-item {
+  color: @p-text;
+  font-size: 1.8rem;
+  display: inline-block;
+  padding: 0 25px;
+  border-right: 1px solid @p-text;
+}
+
+
+
+// Arranjos e Desenvolvimento da Educação Section
+
+.main-section {
+  .column(12);
+  margin: 45px 0;
+}
+
+.main-section-title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: @s-text;
+}
+
+// Letters colors
+.cl-one {
+  display: inline-block;
+  margin: 0;
+  &:first-letter {
+    color: @first-letter;
+  }
+}
+
+.cl-two {
+  display: inline-block;
+  margin: 0;
+
+  &:first-letter {
+    color: @second-letter;
+  }
+
+}
+
+.cl-three {
+  display: inline-block;
+  margin: 0;
+
+  &:first-letter {
+    color: @third-letter;
+  }
+}
+
+.section-text {
+  font-size: 2.2rem;
+  max-width: 775px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+// Responsive nav
+@media (max-width: 768px) {
+
+  .anchor {
+    display: block;
+    color: @nav-color;
+    font-size: 3.6rem;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .main-nav {
+    position: fixed;
+    height: 100%;
+    z-index: 9;
+    transform: translateX(-768px);
+    transition: .3s all ease-in-out;
+  }
+
+  .main-logo {
+    .column(12);
+    max-width: 100%;
+  }
+
+  .main-search {
+    .column(12);
+    max-width: 100%;
+  }
+
+  .custom-menu {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .search {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+
+  .custom-search {
+    margin: 20px auto;
+  }
+
+  .main-menu {
+    .column(12);
+  }
+
+  // Menu active
+  .menu-active .main-nav {
+    transform: translateX(0);
+  }
+
+  .menu-active .anchor {
+    color: @p-text;
+  }
+
+  .main-menu-item {
+    display: block;
+    border-right: 0;
+    padding: 20px 0;
+    border-bottom: 1px solid @p-text;
+  }
+
+  .section-text {
+    text-align: center;
+  }
+
+}

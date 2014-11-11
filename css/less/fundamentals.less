@@ -1,0 +1,217 @@
+// Fundamentals
+// All fundamentals page styles
+
+.fundamentals-box {
+  .row();
+  margin-top: 65px;
+
+  header {
+    margin-bottom: 40px;
+  }
+
+}
+
+.fundamentals-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: @t-text;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.fundamentals-title {
+  &:extend(.about-title);
+  text-align: center;
+  max-width: 452px;
+  margin: 0 auto;
+}
+
+// Book section
+
+.fundamentals-book {
+  .column(3);
+  padding-right: 25px;
+
+  span {
+    font-size: 1.4rem;
+    color: @f-text;
+  }
+
+}
+
+.book-icon {
+  display: inline-block;
+  width: 190px;
+  height: 290px;
+  background-color: @second-letter;
+}
+
+.book-description {
+  display: block;
+  margin: 35px 0 15px 0;
+  font-size: 1.2rem;
+  color: @f-text;
+}
+
+.btn-download {
+  font-size: 1.6rem;
+  padding: 10px 15px;
+  margin-top: 40px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: @p-text;
+  background: #019b06; /* Old browsers */
+  background: -moz-linear-gradient(top,  #019b06 0%, #0aac3e 60%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#019b06), color-stop(60%,#0aac3e)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #019b06 0%,#0aac3e 60%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #019b06 0%,#0aac3e 60%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #019b06 0%,#0aac3e 60%); /* IE10+ */
+  background: linear-gradient(to bottom,  #019b06 0%,#0aac3e 60%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#019b06', endColorstr='#0aac3e',GradientType=0 ); /* IE6-9 */
+}
+
+
+// Details
+
+.fundamentals-detail {
+  .column(8);
+  margin-bottom: 40px;
+}
+
+.detail-title {
+  color: @f-text;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.detail-text {
+  color: 1.4rem;
+  color: @s-text;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.detail-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detail-item {
+  .column(4);
+  padding: 0 5px;
+  display: inline-block;
+
+  &:before {
+    content: "\f071";
+    font-family: "FontAwesome";
+    font-size: 2.4rem;
+    float: left;
+    margin-right: 10px;
+    color: #FF9900;
+  }
+
+  div {
+    width: 80%;
+    float: left;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: @f-text;
+    margin: 0;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: @f-text;
+    margin: 0;
+  }
+
+}
+
+.detail-item-two {
+
+  &:extend(.detail-item);
+
+  &:before {
+    content: "\f058";
+    font-family: "FontAwesome";
+    font-size: 2.4rem;
+    float: left;
+    margin-right: 10px;
+    color: #006600;
+  }
+
+  div {
+    width: 80%;
+    float: left;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: @f-text;
+    margin: 0;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: @f-text;
+    margin: 0;
+  }
+}
+
+
+// Responsive
+
+@media (max-width: 768px) {
+
+  .fundamentals-book {
+    .column(12);
+    padding: 0 15px;
+
+    span {
+      display: block;
+      text-align: center;
+    }
+
+    .btn-download {
+      display: block;
+      margin: 40px auto;
+    }
+  }
+
+  .book-icon {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .book-description {
+    text-align: center;
+  }
+
+  .fundamentals-detail {
+    .column(12);
+    padding: 0 15px;
+  }
+
+}
+
+
+// Extra-small devices
+
+@media (max-width: 480px) {
+
+  .detail-item {
+    .column(12);
+    margin: 10px 0;
+  }
+
+  .fundamentals-detail {
+    margin-top: 30px;
+  }
+
+}
+
