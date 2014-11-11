@@ -3,8 +3,7 @@
  * Version: 0.0.2
  */
 
-
-;(function (document, window) {
+;(function ($, document, window) {
   'use strict';
 
   // App namespace
@@ -15,38 +14,31 @@
    *
    */
   APP.init = function() {
-    APP.AJAX('js/data/ideb.json', function(json) {
 
-      var data = JSON.parse(json);
+    // Get data
+    $.getJSON("js/data/ideb.json", function(data) {
+      // Store HTML Structure
+      var table = $('.ibeb-tbody'),
+          html  = "";
 
-      APP.populate(data);
+      // Loop which populate table
+      $.each(data.city, function(item, val) {
+        var value = APP.calcIdeb(val.flow, val.learn);
+        html += "<tr class='ideb-city'>" +
+          "<td class='city-name' colspan='4'>" + val.name + "</td>" +
+          "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
+          "<td class='average'>"+ val.alert +"</td>" +
+          "<td class='average'>"+ val.atention +"</td>" +
+          "<td class='average'>"+ val.improve +"</td>" +
+          "<td class='average'>"+ val.keep +"</td>" +
+          "</tr>";
+      });
+
+      $('.ideb-tbody').html(html);
 
     });
-  };
 
-
-  /* AJAX function wrapper
-   * @param url {string} Json URL
-   * @param callback (function) Callback function
-   */
-   APP.AJAX = function(url, callback) {
-    var req = new XMLHttpRequest(),
-        ready;
-
-    req.overrideMimeType('application/json');
-
-    req.onreadystatechange = function() {
-      ready = (req.readyState == 4 && req.status == 200);
-      callback(ready ? req.responseText : false);
-    }
-
-    req.open("GET", url, true);
-    req.send();
-
-   };
-
-
-   /* Change commas for dot
+    /* Change commas for dot
    * @param before {string} String with comma value
    */
    APP.removeDot = function(before) {
@@ -71,33 +63,11 @@
      return parseFloat(Iflow) * parseFloat(Ilearn);
    }
 
-   /* AJAX function wrapper
-   * @param data {json} IDEB Data
-   * @param callback (function) Callback function
-   */
-   APP.populate = function(data) {
-     var i      = 0,
-         size   = data.city.length,
-         table  = document.querySelector('.ideb-tbody');
+  };
 
-     for(i; i < size; i++) {
-        var value = APP.calcIdeb(data.city[i].flow, data.city[i].learn);
-        var html =
-          "<tr>" +
-          "<td class='city-name'>" + data.city[i].name + "</td>" +
-          "<td class='flow-calc'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
-          "<td class='average'>"+ data.city[i].alert +"</td>" +
-          "<td class='average'>"+ data.city[i].atention +"</td>" +
-          "<td class='average'>"+ data.city[i].improve +"</td>" +
-          "<td class='average'>"+ data.city[i].keep +"</td>" +
-          "</tr>";
-     }
 
-     table.insertAdjacentHTML('afterbegin', html);
-
-   }
 
    APP.init();
 
-}(document, window));
+}(jQuery, document, window));
 
