@@ -85,10 +85,15 @@
         var html =
           "<tr>" +
           "<td class='city-name'>" + data.city[i].name + "</td>" +
-          "<td class='flow-calc'>" + value + "</td>";
+          "<td class='flow-calc'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
+          "<td class='average'>"+ data.city[i].alert +"</td>" +
+          "<td class='average'>"+ data.city[i].atention +"</td>" +
+          "<td class='average'>"+ data.city[i].improve +"</td>" +
+          "<td class='average'>"+ data.city[i].keep +"</td>" +
+          "</tr>";
      }
 
-     table.insertAdjacentHTML('beforeBegin', html);
+     table.insertAdjacentHTML('afterbegin', html);
 
    }
 
