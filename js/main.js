@@ -24,10 +24,14 @@
       // Loop which populate table
       $.each(data.city, function(item, val) {
         // Ideb average
-        var value = APP.calcIdeb(val.flow, val.learn);
+        var value        = APP.calcIdeb(val.flow, val.learn),
+            schoolSuffix = ((val.schools == 1) ? ' escola' : ' escolas');
 
         html += "<tr class='ideb-city'>" +
-              "<td class='city-name' colspan='4'>" + val.name + "</td>" +
+              "<td class='city-name' colspan='4'><h1>" +
+                val.name + "</h1>" +
+                "<h2>" + val.schools + schoolSuffix + "</h2>" +
+              "</td>" +
               "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
               "<td class='average'>"+
                 "<div class='circle-one' data-value="+ val.alert * 0.01 +">" +
@@ -55,7 +59,9 @@
       // Insert data into the table
       $('.ideb-tbody').html(html);
 
-      callback();
+      if(callback()) {
+        callback()
+      }
 
     });
 
@@ -109,7 +115,7 @@
     $('.circle-one').circleProgress({
         value: $('.circle-one').attr('data-value'),
         size: 65,
-        startAngle: 0,
+        startAngle: -360,
         thickness: 8,
         fill: {
             color: "#f7e058"
@@ -119,7 +125,7 @@
     $('.circle-two').circleProgress({
         value: $('.circle-two').attr('data-value'),
         size: 65,
-        startAngle: 0,
+        startAngle: -360,
         thickness: 8,
         fill: {
             color: "#efa548"
@@ -129,7 +135,7 @@
     $('.circle-three').circleProgress({
         value: $('.circle-three').attr('data-value'),
         size: 65,
-        startAngle: 0,
+        startAngle: -360,
         thickness: 8,
         fill: {
             color: "#b7d34f"
@@ -139,7 +145,7 @@
     $('.circle-four').circleProgress({
         value: $('.circle-four').attr('data-value'),
         size: 65,
-        startAngle: 0,
+        startAngle: -360,
         thickness: 8,
         fill: {
             color: "#61add8"
@@ -156,7 +162,7 @@
      $.getJSON(where, function(data) {
       // Store HTML Structure
       var table = $('.ibeb-tbody'),
-          html  = "Nenhum resultado encontrado :(";
+          html  = "";
 
       // Loop searching the city
       $.each(data.city, function(item, val) {
@@ -164,49 +170,62 @@
             inputText = APP.removeAccent(city),
             textSize = inputText.length;
 
-        if(textSize >= 3) {
-          dataName = dataName.substring(0, textSize);
-
-          if( inputText == dataName ) {
-
-            // Ideb average
-            var value = APP.calcIdeb(val.flow, val.learn);
-
-            html += "<tr class='ideb-city'>" +
-              "<td class='city-name' colspan='4'>" + val.name + "</td>" +
-              "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
-              "<td class='average'>"+
-                "<div class='circle-one' data-value="+ val.alert * 0.01 +">" +
-                  val.alert +
-                "</div>" +
-               "</td>" +
-              "<td class='average'>"+
-                "<div class='circle-two' data-value="+ val.atention * 0.01 +">" +
-                 val.atention +
-                 "</div>" +
-              "</td>" +
-              "<td class='average'>"+
-                "<div class='circle-three' data-value="+ val.improve * 0.01 +">" +
-                 val.improve +"</td>" +
-                "</div>" +
-              "</td>" +
-              "<td class='average'>"+
-                "<div class='circle-four' data-value="+ val.keep * 0.01 +">" +
-                  val.keep +
-                "</div>" +
-              "</td>" +
-              "</tr>";
-          }
+        if(textSize === 0) {
+          APP.init(function() {
+            APP.progress();
+          });
 
         } else {
-          alert('3 letras no mínimo, por favor');
-          return false;
-        }
+          if(textSize >= 3) {
+            dataName = dataName.substring(0, textSize);
 
+            if( inputText == dataName ) {
+
+              // Ideb average
+              var value = APP.calcIdeb(val.flow, val.learn);
+
+              html += "<tr class='ideb-city'>" +
+                "<td class='city-name' colspan='4'><h1>" +
+                  val.name + "</h1>" +
+                  "<h2>" + val.schools + "</h2>" +
+                "</td>" +
+                "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
+                "<td class='average'>"+
+                  "<div class='circle-one' data-value="+ val.alert * 0.01 +">" +
+                    val.alert +
+                  "</div>" +
+                 "</td>" +
+                "<td class='average'>"+
+                  "<div class='circle-two' data-value="+ val.atention * 0.01 +">" +
+                   val.atention +
+                   "</div>" +
+                "</td>" +
+                "<td class='average'>"+
+                  "<div class='circle-three' data-value="+ val.improve * 0.01 +">" +
+                   val.improve +"</td>" +
+                  "</div>" +
+                "</td>" +
+                "<td class='average'>"+
+                  "<div class='circle-four' data-value="+ val.keep * 0.01 +">" +
+                    val.keep +
+                  "</div>" +
+                "</td>" +
+                "</tr>";
+            }
+          }
+        }
       });
 
       // Insert data into the table
-      $('.ideb-tbody').html(html);
+
+
+
+      if(html != "") {
+        $('.ideb-tbody').html(html);
+      } else {
+        $('.ideb-tbody').html("Nenhum resultado encontrado :)");
+      }
+
       APP.progress();
 
     });
