@@ -52,10 +52,74 @@
 
   td {
     border: 1px solid @ft-text;
-    padding: 40px 35px;
+    padding: 15px;
   }
 }
 
 .ideb-city {
   text-align: center;
+}
+
+
+// Responsive
+
+@media (max-width: 768px) {
+
+  .ideb-table {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+  }
+
+  .ideb-table {
+
+    thead {
+      width: 30%;
+    }
+
+    tbody {
+      width: 70%;
+      overflow-x: scroll;
+    }
+
+  }
+
+  .ideb-table thead,
+  .ideb-table tbody,
+  .ideb-table th,
+  .ideb-table td,
+  .ideb-table tr {
+    display: block;
+  }
+
+  .ideb-table {
+
+    td {
+      height: 100px;
+    }
+
+    th {
+      height: 100px;
+    }
+
+  }
+
+  .ideb-table {
+
+    thead {
+      float: left;
+    }
+
+    tbody {
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+
+  }
+
+  .ideb-table tbody tr {
+    display: inline-block;
+  }
+
 }
