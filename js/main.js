@@ -28,24 +28,24 @@
 
         html += "<tr class='ideb-city'>" +
               "<td class='city-name' colspan='4'>" + val.name + "</td>" +
-              "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
+              "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
               "<td class='average'>"+
-                "<div class='circle-one'>" +
+                "<div class='circle-one' data-value="+ val.alert * 0.01 +">" +
                   val.alert +
                 "</div>" +
                "</td>" +
               "<td class='average'>"+
-                "<div class='circle-two'>" +
+                "<div class='circle-two' data-value="+ val.atention * 0.01 +">" +
                  val.atention +
                  "</div>" +
               "</td>" +
               "<td class='average'>"+
-                "<div class='circle-three'>" +
+                "<div class='circle-three' data-value="+ val.improve * 0.01 +">" +
                  val.improve +"</td>" +
                 "</div>" +
               "</td>" +
               "<td class='average'>"+
-                "<div class='circle-four'>" +
+                "<div class='circle-four' data-value="+ val.keep * 0.01 +">" +
                   val.keep +
                 "</div>" +
               "</td>" +
@@ -103,6 +103,50 @@
      return parseFloat(Iflow) * parseFloat(Ilearn);
    }
 
+   /* Wrapper radial progress
+   */
+   APP.progress = function() {
+    $('.circle-one').circleProgress({
+        value: $('.circle-one').attr('data-value'),
+        size: 65,
+        startAngle: 0,
+        thickness: 8,
+        fill: {
+            color: "#f7e058"
+        }
+    });
+
+    $('.circle-two').circleProgress({
+        value: $('.circle-two').attr('data-value'),
+        size: 65,
+        startAngle: 0,
+        thickness: 8,
+        fill: {
+            color: "#efa548"
+        }
+    });
+
+    $('.circle-three').circleProgress({
+        value: $('.circle-three').attr('data-value'),
+        size: 65,
+        startAngle: 0,
+        thickness: 8,
+        fill: {
+            color: "#b7d34f"
+        }
+    });
+
+    $('.circle-four').circleProgress({
+        value: $('.circle-four').attr('data-value'),
+        size: 65,
+        startAngle: 0,
+        thickness: 8,
+        fill: {
+            color: "#61add8"
+        }
+    });
+   }
+
    /* Average between the two given parameters
    * @param flow {string} Flow value
    * @param learn (string) Lean value
@@ -130,24 +174,24 @@
 
             html += "<tr class='ideb-city'>" +
               "<td class='city-name' colspan='4'>" + val.name + "</td>" +
-              "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
+              "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
               "<td class='average'>"+
-                "<div class='circle-one'>" +
+                "<div class='circle-one' data-value="+ val.alert * 0.01 +">" +
                   val.alert +
                 "</div>" +
                "</td>" +
               "<td class='average'>"+
-                "<div class='circle-two'>" +
+                "<div class='circle-two' data-value="+ val.atention * 0.01 +">" +
                  val.atention +
                  "</div>" +
               "</td>" +
               "<td class='average'>"+
-                "<div class='circle-three'>" +
+                "<div class='circle-three' data-value="+ val.improve * 0.01 +">" +
                  val.improve +"</td>" +
                 "</div>" +
               "</td>" +
               "<td class='average'>"+
-                "<div class='circle-four'>" +
+                "<div class='circle-four' data-value="+ val.keep * 0.01 +">" +
                   val.keep +
                 "</div>" +
               "</td>" +
@@ -163,6 +207,7 @@
 
       // Insert data into the table
       $('.ideb-tbody').html(html);
+      APP.progress();
 
     });
 
@@ -177,41 +222,7 @@
 
   APP.init(function() {
 
-    $('.circle-one').circleProgress({
-        value: 0.75,
-        size: 65,
-        startAngle: 0,
-        fill: {
-            color: "#f7e058"
-        }
-    });
-
-    $('.circle-two').circleProgress({
-        value: 0.75,
-        size: 65,
-        startAngle: 0,
-        fill: {
-            color: "#efa548"
-        }
-    });
-
-    $('.circle-three').circleProgress({
-        value: 0.75,
-        size: 65,
-        startAngle: 0,
-        fill: {
-            color: "#b7d34f"
-        }
-    });
-
-    $('.circle-four').circleProgress({
-        value: 0.75,
-        size: 65,
-        startAngle: 0,
-        fill: {
-            color: "#61add8"
-        }
-    });
+    APP.progress();
 
   });
 
