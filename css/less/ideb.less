@@ -47,8 +47,33 @@
     font-size: 1.2rem;
     font-weight: 800;
     color: @f-text;
+    border-right: 1px solid @ft-text;
   }
 
+}
+
+.ideb-search {
+  margin-left: 5px;
+  width: 140px;
+  position: relative;
+
+  input {
+    height: 30px;
+    padding-left: 30px;
+    outline: 0;
+    border-radius: 4px;
+    font-size: 1.2rem;
+  }
+
+  &:before {
+    content: "\f002";
+    font-family: 'FontAwesome';
+    color: @t-text;
+    font-size: 1.6rem;
+    position: absolute;
+    left: 6px;
+    top: -2px;
+  }
 }
 
 .ideb-tbody {
