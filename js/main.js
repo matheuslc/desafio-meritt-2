@@ -13,7 +13,7 @@
   /* Active functions
    *
    */
-  APP.init = function() {
+  APP.init = function(callback) {
 
     // Get data
     $.getJSON("js/data/ideb.json", function(data) {
@@ -27,19 +27,38 @@
         var value = APP.calcIdeb(val.flow, val.learn);
 
         html += "<tr class='ideb-city'>" +
-          "<td class='city-name' colspan='4'>" + val.name + "</td>" +
-          "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
-          "<td class='average'>"+ val.alert +"</td>" +
-          "<td class='average'>"+ val.atention +"</td>" +
-          "<td class='average'>"+ val.improve +"</td>" +
-          "<td class='average'>"+ val.keep +"</td>" +
-          "</tr>";
+              "<td class='city-name' colspan='4'>" + val.name + "</td>" +
+              "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
+              "<td class='average'>"+
+                "<div class='circle-one'>" +
+                  val.alert +
+                "</div>" +
+               "</td>" +
+              "<td class='average'>"+
+                "<div class='circle-two'>" +
+                 val.atention +
+                 "</div>" +
+              "</td>" +
+              "<td class='average'>"+
+                "<div class='circle-three'>" +
+                 val.improve +"</td>" +
+                "</div>" +
+              "</td>" +
+              "<td class='average'>"+
+                "<div class='circle-four'>" +
+                  val.keep +
+                "</div>" +
+              "</td>" +
+              "</tr>";
       });
 
       // Insert data into the table
       $('.ideb-tbody').html(html);
 
+      callback();
+
     });
+
 
     /* Change commas for dot
    * @param before {string} String with comma value
@@ -105,17 +124,33 @@
           dataName = dataName.substring(0, textSize);
 
           if( inputText == dataName ) {
-            console.log('to auqi porra');
+
             // Ideb average
             var value = APP.calcIdeb(val.flow, val.learn);
 
             html += "<tr class='ideb-city'>" +
               "<td class='city-name' colspan='4'>" + val.name + "</td>" +
               "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
-              "<td class='average'>"+ val.alert +"</td>" +
-              "<td class='average'>"+ val.atention +"</td>" +
-              "<td class='average'>"+ val.improve +"</td>" +
-              "<td class='average'>"+ val.keep +"</td>" +
+              "<td class='average'>"+
+                "<div class='circle-one'>" +
+                  val.alert +
+                "</div>" +
+               "</td>" +
+              "<td class='average'>"+
+                "<div class='circle-two'>" +
+                 val.atention +
+                 "</div>" +
+              "</td>" +
+              "<td class='average'>"+
+                "<div class='circle-three'>" +
+                 val.improve +"</td>" +
+                "</div>" +
+              "</td>" +
+              "<td class='average'>"+
+                "<div class='circle-four'>" +
+                  val.keep +
+                "</div>" +
+              "</td>" +
               "</tr>";
           }
 
@@ -135,12 +170,52 @@
 
   };
 
+  // Trigger focusout
   $('.ideb-search').on('focusout', function() {
     APP.searchCity('js/data/ideb.json',$(this).val());
   });
 
+  APP.init(function() {
 
-   APP.init();
+    $('.circle-one').circleProgress({
+        value: 0.75,
+        size: 65,
+        startAngle: 0,
+        fill: {
+            color: "#f7e058"
+        }
+    });
+
+    $('.circle-two').circleProgress({
+        value: 0.75,
+        size: 65,
+        startAngle: 0,
+        fill: {
+            color: "#efa548"
+        }
+    });
+
+    $('.circle-three').circleProgress({
+        value: 0.75,
+        size: 65,
+        startAngle: 0,
+        fill: {
+            color: "#b7d34f"
+        }
+    });
+
+    $('.circle-four').circleProgress({
+        value: 0.75,
+        size: 65,
+        startAngle: 0,
+        fill: {
+            color: "#61add8"
+        }
+    });
+
+  });
+
+
 
 }(jQuery, document, window));
 
