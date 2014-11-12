@@ -93,30 +93,35 @@
      $.getJSON(where, function(data) {
       // Store HTML Structure
       var table = $('.ibeb-tbody'),
-          html  = "";
+          html  = "Nenhum resultado encontrado :(";
 
       // Loop searching the city
       $.each(data.city, function(item, val) {
-        var a = APP.removeAccent(val.name),
-            b = APP.removeAccent(city);
+        var dataName = APP.removeAccent(val.name),
+            inputText = APP.removeAccent(city),
+            textSize = inputText.length;
 
-        console.log(a,b);
+        if(textSize >= 3) {
+          dataName = dataName.substring(0, textSize);
 
-        if( a == b ) {
-          // Ideb average
-          var value = APP.calcIdeb(val.flow, val.learn);
+          if( inputText == dataName ) {
+            console.log('to auqi porra');
+            // Ideb average
+            var value = APP.calcIdeb(val.flow, val.learn);
 
-          html += "<tr class='ideb-city'>" +
-            "<td class='city-name' colspan='4'>" + val.name + "</td>" +
-            "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
-            "<td class='average'>"+ val.alert +"</td>" +
-            "<td class='average'>"+ val.atention +"</td>" +
-            "<td class='average'>"+ val.improve +"</td>" +
-            "<td class='average'>"+ val.keep +"</td>" +
-            "</tr>";
+            html += "<tr class='ideb-city'>" +
+              "<td class='city-name' colspan='4'>" + val.name + "</td>" +
+              "<td class='flow-calc' colspan='2'>" + APP.removeComma(value.toFixed(2)) + "</td>"+
+              "<td class='average'>"+ val.alert +"</td>" +
+              "<td class='average'>"+ val.atention +"</td>" +
+              "<td class='average'>"+ val.improve +"</td>" +
+              "<td class='average'>"+ val.keep +"</td>" +
+              "</tr>";
+          }
 
         } else {
-          html = "Nenhuma cidade encontrada, tente novamente :)";
+          alert('3 letras no mínimo, por favor');
+          return false;
         }
 
       });
