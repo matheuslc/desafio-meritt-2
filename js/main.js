@@ -166,9 +166,12 @@
 
       // Loop searching the city
       $.each(data.city, function(item, val) {
-        var dataName = APP.removeAccent(val.name),
-            inputText = APP.removeAccent(city),
-            textSize = inputText.length;
+        var dataName     = APP.removeAccent(val.name),
+            inputText    = APP.removeAccent(city),
+            textSize     = inputText.length,
+            schoolSuffix = ((val.schools == 1) ? ' escola' : ' escolas');
+
+        console.log(textSize);
 
         if(textSize === 0) {
           APP.init(function() {
@@ -187,7 +190,7 @@
               html += "<tr class='ideb-city'>" +
                 "<td class='city-name' colspan='4'><h1>" +
                   val.name + "</h1>" +
-                  "<h2>" + val.schools + "</h2>" +
+                  "<h2>" + val.schools + schoolSuffix + "</h2>" +
                 "</td>" +
                 "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
                 "<td class='average'>"+
@@ -221,6 +224,7 @@
 
 
       if(html != "") {
+        console.log('here')
         $('.ideb-tbody').html(html);
       } else {
         $('.ideb-tbody').html("Nenhum resultado encontrado :)");
@@ -235,8 +239,8 @@
   };
 
   // Trigger focusout
-  $('.ideb-search').on('focusout', function() {
-    APP.searchCity('js/data/ideb.json',$(this).val());
+  $('.ideb-search input').on('focusout', function() {
+    APP.searchCity('js/data/ideb.json', $(this).val());
   });
 
   APP.init(function() {
