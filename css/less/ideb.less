@@ -46,7 +46,6 @@
   th {
     padding: 16px;
     font-size: 1.2rem;
-    max-height: 72px;
     font-weight: 800;
     color: @f-text;
     border-right: 1px solid @ft-text;
@@ -174,6 +173,20 @@
     tbody {
       width: 70%;
       overflow-x: scroll;
+    }
+
+  }
+
+  .ideb-search {
+
+    input {
+      padding-left: 1px;
+      margin-top: 5px;
+      max-width: 100%;
+    }
+
+    &:before {
+      display: none;
     }
 
   }
