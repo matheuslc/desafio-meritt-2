@@ -240,6 +240,11 @@
     APP.searchCity('js/data/ideb.json', $(this).val());
   });
 
+  // Responsivo Menu Anchor
+  $('.anchor').on('click', function() {
+    $('body').toggleClass('menu-active');
+  });
+
   APP.init(function() {
 
     APP.progress();
