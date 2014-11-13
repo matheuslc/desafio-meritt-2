@@ -28,32 +28,32 @@
             schoolSuffix = ((val.schools == 1) ? ' escola' : ' escolas');
 
         html += "<tr class='ideb-city'>" +
-              "<td class='city-name' colspan='4'><h1>" +
-                val.name + "</h1>" +
-                "<h2>" + val.schools + schoolSuffix + "</h2>" +
-              "</td>" +
-              "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
-              "<td class='average'>"+
-                "<div class='circle-one' data-value="+ val.alert * 0.01 +">" +
-                  val.alert +
-                "</div>" +
-               "</td>" +
-              "<td class='average'>"+
-                "<div class='circle-two' data-value="+ val.atention * 0.01 +">" +
-                 val.atention +
-                 "</div>" +
-              "</td>" +
-              "<td class='average'>"+
-                "<div class='circle-three' data-value="+ val.improve * 0.01 +">" +
-                 val.improve +"</td>" +
-                "</div>" +
-              "</td>" +
-              "<td class='average'>"+
-                "<div class='circle-four' data-value="+ val.keep * 0.01 +">" +
-                  val.keep +
-                "</div>" +
-              "</td>" +
-              "</tr>";
+                "<td class='city-name' colspan='4'><h1>" +
+                  val.name + "</h1>" +
+                  "<h2>" + val.schools + schoolSuffix + "</h2>" +
+                "</td>" +
+                "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
+                "<td class='average'>"+
+                  "<div class='circle circle-one' data-value="+ val.alert * 0.01 +">" +
+                    "<span>" + val.alert + "%" + "</span>" +
+                  "</div>" +
+                 "</td>" +
+                "<td class='average'>"+
+                  "<div class='circle circle-two' data-value="+ val.atention * 0.01 +">" +
+                   "<span>" + val.atention + "%" + "</span>" +
+                   "</div>" +
+                "</td>" +
+                "<td class='average'>"+
+                  "<div class='circle circle-three' data-value="+ val.improve * 0.01 +">" +
+                   "<span>" + val.improve + "%" + "</spab>" + "</td>" +
+                  "</div>" +
+                "</td>" +
+                "<td class='average'>"+
+                  "<div class='circle circle-four' data-value="+ val.keep * 0.01 +">" +
+                    "<span>" + val.keep + "%" + "</span>" +
+                  "</div>" +
+                "</td>" +
+                "</tr>";
       });
 
       // Insert data into the table
@@ -171,8 +171,6 @@
             textSize     = inputText.length,
             schoolSuffix = ((val.schools == 1) ? ' escola' : ' escolas');
 
-        console.log(textSize);
-
         if(textSize === 0) {
           APP.init(function() {
             APP.progress();
@@ -194,23 +192,23 @@
                 "</td>" +
                 "<td class='flow-calc' colspan='2'>" + val.flow + " x " + val.learn + " = " + APP.removeComma(value.toFixed(2)) + "</td>"+
                 "<td class='average'>"+
-                  "<div class='circle-one' data-value="+ val.alert * 0.01 +">" +
-                    val.alert +
+                  "<div class='circle circle-one' data-value="+ val.alert * 0.01 +">" +
+                    "<span>" + val.alert + "</span>" +
                   "</div>" +
                  "</td>" +
                 "<td class='average'>"+
-                  "<div class='circle-two' data-value="+ val.atention * 0.01 +">" +
-                   val.atention +
+                  "<div class='circle circle-two' data-value="+ val.atention * 0.01 +">" +
+                   "<span>" + val.atention + "</span>" +
                    "</div>" +
                 "</td>" +
                 "<td class='average'>"+
-                  "<div class='circle-three' data-value="+ val.improve * 0.01 +">" +
-                   val.improve +"</td>" +
+                  "<div class='circle circle-three' data-value="+ val.improve * 0.01 +">" +
+                   "<span>" + val.improve + "</spab>" + "</td>" +
                   "</div>" +
                 "</td>" +
                 "<td class='average'>"+
-                  "<div class='circle-four' data-value="+ val.keep * 0.01 +">" +
-                    val.keep +
+                  "<div class='circle circle-four' data-value="+ val.keep * 0.01 +">" +
+                    "<span>" + val.keep + "</span>" +
                   "</div>" +
                 "</td>" +
                 "</tr>";
@@ -224,7 +222,6 @@
 
 
       if(html != "") {
-        console.log('here')
         $('.ideb-tbody').html(html);
       } else {
         $('.ideb-tbody').html("Nenhum resultado encontrado :)");
