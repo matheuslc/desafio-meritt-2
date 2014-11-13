@@ -7,8 +7,9 @@
 - ____ less (LESS files)
 - ____ maps (sourcemaps files)
 - __ js (javascript files)
+- ____data (json files)
 - ____ maps (sourcemaps files)
-- ____ vendor (third party plugins)
+- ____ vendor (third party plu gins)
 
 
 ### How to use
