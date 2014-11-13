@@ -46,6 +46,7 @@
   th {
     padding: 16px;
     font-size: 1.2rem;
+    max-height: 72px;
     font-weight: 800;
     color: @f-text;
     border-right: 1px solid @ft-text;
@@ -80,18 +81,20 @@
 .th-relative {
   position: relative;
   padding: 16px 0 0 0 !important;
+  padding-bottom: 0 !important;
 
   .ideb-submenu {
     .clearfix();
     margin-top: 10px;
     border-top: 1px solid @ft-text;
     clear: both;
-    padding: 5px 0 5px 5px;
   }
 
   span {
     float: left;
     width: 25%;
+    height: 30px;
+    padding-top: 7px;
     border-right: 1px solid @ft-text;
   }
 }
@@ -216,6 +219,10 @@
   // Utility class
 
   .mobile-hidden {
+    display: none;
+  }
+
+  .ideb-submenu {
     display: none;
   }
 
